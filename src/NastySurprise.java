@@ -1,56 +1,62 @@
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
+import java.net.URL;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class NastySurprise extends MouseAdapter {
+public class NastySuprise implements ActionListener {
+    JFrame frame = new JFrame();
+    JPanel panel = new JPanel();
+    JButton button = new JButton();
+    JButton buttontwo = new JButton();
 
-	public static void main(String[] args) throws Exception {
-		new NastySurprise().getGoing();
-	}
+    public static void main(String[] args) {
+        new NastySuprise().buttons();
+    }
 
-	private void getGoing() throws MalformedURLException {
-	
-		JFrame x = new JFrame();
+    public void buttons() {
 
-		x.setVisible(true);
+        frame.add(panel);
+        panel.add(button);
+        panel.add(buttontwo);
+        frame.setSize(250, 1050);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        button.setText("Trick");
+        buttontwo.setText("Treat");
+        button.addActionListener(this);
+        buttontwo.addActionListener(this);
 
-		x.setSize(500, 500);
+    }
 
-		x.setTitle("YASUO");
+    private void showPictureFromTheInternet(String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            Icon icon = new ImageIcon(url);
+            JLabel imageLabel = new JLabel(icon);
+            JFrame frame = new JFrame();
+            frame.add(imageLabel);
+            frame.setVisible(true);
+            frame.pack();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
 
-		JPanel y = new JPanel();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        if (e.getSource() == button) {
+            showPictureFromTheInternet();
+        } else {
+            showPictureFromTheInternet();
+        }
+    }
 
-		JButton b = new JButton();
-		
-		b.setSize(100, 10);
-		
-		x.add(y);
-	
-		
-		x.pack();
-
-	}
-
-	public void mouseClicked(MouseEvent e) {
-
-		if (e.getID() == MouseEvent.MOUSE_CLICKED) {
-			System.out.println("mouse clicked");
-		}
-
-		JLabel drumClicked = (JLabel) e.getSource();
-		
-		
-		
-		if (drumClicked == drumLabelWithImage) {
-		
-		} else if(drumClicked == drum2LabelWithImage) {
-			
-		}
-
-	}
 }
