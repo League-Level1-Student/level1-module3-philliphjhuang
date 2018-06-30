@@ -10,14 +10,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class NastySuprise implements ActionListener {
+public class NastySurprise implements ActionListener {
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
     JButton button = new JButton();
     JButton buttontwo = new JButton();
 
     public static void main(String[] args) {
-        new NastySuprise().buttons();
+        new NastySurprise().buttons();
     }
 
     public void buttons() {
@@ -25,9 +25,9 @@ public class NastySuprise implements ActionListener {
         frame.add(panel);
         panel.add(button);
         panel.add(buttontwo);
-        frame.setSize(250, 1050);
+        frame.setSize(150, 100);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         button.setText("Trick");
         buttontwo.setText("Treat");
         button.addActionListener(this);
@@ -53,9 +53,9 @@ public class NastySuprise implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if (e.getSource() == button) {
-            showPictureFromTheInternet();
+            showPictureFromTheInternet("https://01iajxoiw1-flywheel.netdna-ssl.com/wp-content/uploads/2017/11/cute.jpg");
         } else {
-            showPictureFromTheInternet();
+            showPictureFromTheInternet("https://i.ytimg.com/vi/7DfEwJcQiOg/maxresdefault.jpg");
         }
     }
 
