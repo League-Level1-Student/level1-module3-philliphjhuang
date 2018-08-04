@@ -22,7 +22,7 @@ public class Calculator implements MouseListener {
 	JTextField num2 = new JTextField(20);
 
 	double num = 0;
-	String numm="0";
+	String ans = "0";
 
 	public void makeCalculator() {
 
@@ -35,6 +35,11 @@ public class Calculator implements MouseListener {
 		frame.setTitle("Simple Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.setLayout(new GridBagLayout());
+		
+		add.addMouseListener(this);
+		sub.addMouseListener(this);
+		mul.addMouseListener(this);
+		div.addMouseListener(this);
 		
 		GridBagConstraints constraints =new GridBagConstraints();
 		
@@ -72,7 +77,7 @@ public class Calculator implements MouseListener {
 		constraints.gridx=0;
 		constraints.gridy=2;
 		constraints.gridwidth=4;
-		label.setText(numm);
+		label.setText(ans);
 		panel.add(label, constraints);
 		
 		
@@ -87,8 +92,23 @@ public class Calculator implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+		double num11 = Double.parseDouble(num1.getText());
+		double num22 = Double.parseDouble(num2.getText());
+		
+		
+        // TODO Auto-generated method stub
+        if (e.getSource() == add) {
+       num=add(num11,num22);
+       } else if(e.getSource()==sub) {
+    	   num=sub(num11,num22);
+       } else if(e.getSource()==mul) {
+    	   num=mul(num11,num22);
+       } else if(e.getSource()==div) {
+    	   num=div(num11,num22);
+       }
+        ans = Double.toString(num);
+        label.setText(ans);
 	}
-
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -115,19 +135,18 @@ public class Calculator implements MouseListener {
 	
 	 public void actionPerformed(ActionEvent e) {
 		 
-		 numm = Double.toString(num);
-			double num11 = Double.parseDouble(num1.getText());
-			double num22 = Double.parseDouble(num2.getText());
-			
-	        // TODO Auto-generated method stub
-	        if (e.getSource() == add) {
-	        	numm.setText(Double.toString(num11 + num22));
-	        } else  if (e.getSource() == sub) {
-	        	label.setText(Double.toString(num11 - num22));
-	        } else  if (e.getSource() == mul) {
-	        	label.setText(Double.toString(num11 * num22));
-	        } else  if (e.getSource() == div) {
-	        	label.setText(Double.toString(num11 / num22));
-	     }
+		 
 	}
+	 public double add(double d1, double d2) {
+	 return d1+d2;
+}
+	 public double sub(double d1, double d2) {
+     return d1-d2;
+}
+	 public double mul(double d1, double d2) {
+	return d1*d2;
+}
+	 public double div(double d1, double d2) {
+	return d1/d2;
+}
 }
